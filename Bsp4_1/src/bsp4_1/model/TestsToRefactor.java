@@ -86,6 +86,15 @@ public class TestsToRefactor {
 		}
 
 	@Test
+	public test_setCustomer(){
+		
+		i.setCustomer(c);
+		assertEquals(i.getCustomer().getFirstName, "franz");
+		assertEquals(i.getCustomer().getLastName(), "beispiel");
+		assertEquals(i.getCustomer().getAddress(), a);
+	}
+	
+	@Test
 	public void test_addManyItems_getTotalPrice_Delivery_Costs_5() throws Exception{
 
 		i.setCustomer(c);
@@ -120,7 +129,7 @@ public class TestsToRefactor {
 	}
 	
 	@Test
-	public void test_itemCount_changeMaxItemOrder() {
+	public void test_itemCount_changeMaxItemOrder()throws Exception {
 		int maxItemOrder = 150;
 		amount = 25;
 		i.setCustomer(c);
@@ -137,16 +146,12 @@ public class TestsToRefactor {
 
 	@Test(expected = Exception.class)
 	public void test_addToManyItems() throws ToMuchItemsException {
-
+		int maxItemOrder = 0;
 		int amount = 1;
 
-		try {
-		
-			i.setCustomer(c);
-			i.setMaxItemOrder(maxItemOrder);
+		i.setCustomer(c);
+		i.setMaxItemOrder(maxItemOrder);
+		i.addItems(b1, amount);
 
-			i.addItems(b1, amount);
-
-		} 
-	}
+	} 
 }
