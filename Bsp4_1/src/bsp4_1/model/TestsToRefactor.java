@@ -70,28 +70,24 @@ public class TestsToRefactor {
 	public void test_addSomeBooks() throws Exception{
 
 		int maxItemOrder = 10;
-		
 		//if (amount < 10)
 		amount = 9;
+		i.setCustomer(c);
+		i.setMaxItemOrder(maxItemOrder);
 
-		i = new Invoice();
-			i.setCustomer(c);
-			i.setMaxItemOrder(maxItemOrder);
+		i.addItems(b1, amount);
 
-			i.addItems(b1, amount);
-
-			assertEquals(i.getItemCount(), amount);
-			assertEquals(i.getCustomer().getFirstName(), "franz");
-			assertEquals(i.getCustomer().getLastName(), "beispiel");
-			assertEquals(i.getCustomer().getAddress(), a);
-			assertEquals(i.getMaxItemOrder(), maxItemOrder);
+		assertEquals(i.getItemCount(), amount);
+		assertEquals(i.getCustomer().getFirstName(), "franz");
+		assertEquals(i.getCustomer().getLastName(), "beispiel");
+		assertEquals(i.getCustomer().getAddress(), a);
+		assertEquals(i.getMaxItemOrder(), maxItemOrder);
 
 		}
 
 	@Test
 	public void test_addManyItems_getTotalPrice_Delivery_Costs_5() throws Exception{
 
-		i = new Invoice();
 		i.setCustomer(c);
 		i.setMaxItemOrder(maxItemOrder);
 		amount = 4;
@@ -102,15 +98,13 @@ public class TestsToRefactor {
 			totalPrice += amount * item.getPrice();
 		}
 		totalPrice += DELIVERY_COSTS_5;
-		if (totalPrice == i.getTotalPrice()) {
-			assertTrue(true);
-		}
+		
+		assertEquals(totalPrice == i.getTotalPrice());
 	}
 
 	@Test
 	public void test_addManyItems_getTotalPrice_Delivery_Costs_10() throws Exception{
 
-		i = new Invoice();
 		i.setCustomer(c);
 		i.setMaxItemOrder(maxItemOrder);
 		amount = 6;
@@ -121,40 +115,25 @@ public class TestsToRefactor {
 			totalPrice += amount * item.getPrice();
 		}
 		totalPrice += DELIVERY_COSTS_10;
-		if (totalPrice == i.getTotalPrice()) {
-			assertTrue(true);
-		}
+		
+		assertEquals(totalPrice , i.getTotalPrice());
 	}
+	
 	@Test
 	public void test_itemCount_changeMaxItemOrder() {
 		int maxItemOrder = 150;
+		amount = 25;
+		i.setCustomer(c);
+		i.setMaxItemOrder(maxItemOrder);
 
-		try {
-			a = new Address();
-			
-
-			i = new Invoice();
-			i.setCustomer(c);
-			i.setMaxItemOrder(maxItemOrder);
-
-			//Random r = new Random();
-			//amount = r.nextInt(30) + 1;
-			int itemCount = 0;
+		int itemCount = 0;
 			for (Item item : bookList) {
 				i.addItems(item, amount);
 				itemCount += amount;
 			}
 
-			if (itemCount == i.getItemCount()) {
-				assertTrue(true);
-			} else {
-				assertFalse(true);
-			}
-
-		} catch (Exception e) {
-			assertFalse(true);
-		} 
-	}
+			assertEquals(itemCount , i.getItemCount()); 
+		}
 
 	@Test(expected = Exception.class)
 	public void test_addToManyItems() throws ToMuchItemsException {
@@ -162,10 +141,7 @@ public class TestsToRefactor {
 		int amount = 1;
 
 		try {
-			a = new Address();
-			
-
-			i = new Invoice();
+		
 			i.setCustomer(c);
 			i.setMaxItemOrder(maxItemOrder);
 
