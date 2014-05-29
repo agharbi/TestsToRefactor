@@ -32,7 +32,7 @@ public class TestsToRefactor {
 	List<Item> bookList = new ArrayList<Item>();
 	
 	//@Befor
-	public void setUp(){
+	public void setUp() throws Exception{
 		
 		amount = 0;
 		a = new Address();
@@ -49,6 +49,19 @@ public class TestsToRefactor {
 		bookList.add(b3);
 		bookList.add(b4);
 		bookList.add(b5);
+	}
+	
+	//After
+	public void tearDown() throws Exception{
+		a = null;
+		c = null;
+		b1 = null;
+		b2 = null;
+		b3 = null;
+		b4 = null;
+		b5 = null;
+		i = null;
+		amount = 0;		
 	}
 	
 
@@ -84,28 +97,11 @@ public class TestsToRefactor {
 			} else {
 				assertTrue("es wurden zuviele Items hinzugefügt", true);
 			}
-		} finally {
-			a = null;
-			c = null;
-			b1 = null;
-			b2 = null;
-			b3 = null;
-			b4 = null;
-			b5 = null;
-			i = null;
-			amount = 0;
-		}
-
+		} 
 	}
 
 	@Test
 	public void test_addManyItems_getTotalPrice() {
-
-		bookList.add(b1);
-		bookList.add(b2);
-		bookList.add(b3);
-		bookList.add(b4);
-		bookList.add(b5);
 
 		try {
 			a = new Address();
@@ -138,27 +134,12 @@ public class TestsToRefactor {
 			} else {
 				assertTrue("es wurden zuviele Items hinzugefügt", true);
 			}
-		} finally {
-			a = null;
-			c = null;
-			b1 = null;
-			b2 = null;
-			b3 = null;
-			b4 = null;
-			b5 = null;
-			i = null;
-		}
+		} 
 	}
 
 	@Test
 	public void test_itemCount_changeMaxItemOrder() {
 		int maxItemOrder = 150;
-		
-		bookList.add(b1);
-		bookList.add(b2);
-		bookList.add(b3);
-		bookList.add(b4);
-		bookList.add(b5);
 
 		try {
 			a = new Address();
@@ -184,17 +165,7 @@ public class TestsToRefactor {
 
 		} catch (Exception e) {
 			assertFalse(true);
-		} finally {
-			a = null;
-			c = null;
-			b1 = null;
-			b2 = null;
-			b3 = null;
-			b4 = null;
-			b5 = null;
-			i = null;
-			amount = 0;
-		}
+		} 
 	}
 
 	@Test(expected = Exception.class)
@@ -212,16 +183,6 @@ public class TestsToRefactor {
 
 			i.addItems(b1, amount);
 
-		} finally {
-			a = null;
-			c = null;
-			b1 = null;
-			b2 = null;
-			b3 = null;
-			b4 = null;
-			b5 = null;
-			i = null;
-			amount = 0;
-		}
+		} 
 	}
 }
