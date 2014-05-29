@@ -18,23 +18,27 @@ import bsp4_1.model.Item;
 import bsp4_1.model.ToMuchItemsException;
 
 public class TestsToRefactor {
+	
+	Address a = null;
+	Customer c = null;
+	final int DELIVERY_COSTS_5 = 7;
+	final int DELIVERY_COSTS_10 = 5;
+	Book b1 = new Book(12.5, "das leben des max mustermann", "mustermann", 125);
+	Book b2 = new Book(14.99, "sofies welt", "gaarder", 251);
+	Book b3 = new Book(8.69, "the jungle books", "kipling", 215);
+	Book b4 = new Book(15.99, "great expectations", "dickens", 314);
+	Book b5 = new Book(12.99, "küsschen, küsschen", "dahl", 145);
+	
+	Invoice i = null;
+	int amount = 0;
 
 	@Test
 	public void test_addSomeBooks() {
 
-		Address a = null;
-		Customer c = null;
-		final int DELIVERY_COSTS_5 = 7;
-		final int DELIVERY_COSTS_10 = 5;
-		Book b1 = new Book(12.5, "das leben des max mustermann", "mustermann", 125);
-		Book b2 = new Book(14.99, "sofies welt", "gaarder", 251);
-		Book b3 = new Book(8.69, "the jungle books", "kipling", 215);
-		Book b4 = new Book(15.99, "great expectations", "dickens", 314);
-		Book b5 = new Book(12.99, "küsschen, küsschen", "dahl", 145);
+		
 		int maxItemOrder = 10;
 
 		Invoice i = null;
-		int amount = 0;
 
 		try {
 			a = new Address();
@@ -77,26 +81,12 @@ public class TestsToRefactor {
 	@Test
 	public void test_addManyItems_getTotalPrice() {
 
-		final int DELIVERY_COSTS_5 = 7;
-		final int DELIVERY_COSTS_10 = 5;
-		Address a = null;
-		Customer c = null;
-		int maxItemOrder = 10;
-		Book b1 = new Book(12.5, "das leben des max mustermann", "mustermann", 125);
-		Book b2 = new Book(14.99, "sofies welt", "gaarder", 251);
-		Book b3 = new Book(8.69, "the jungle books", "kipling", 215);
-		Book b4 = new Book(15.99, "great expectations", "dickens", 314);
-		Book b5 = new Book(12.99, "küsschen, küsschen", "dahl", 145);
-
 		List<Item> bookList = new ArrayList<Item>();
 		bookList.add(b1);
 		bookList.add(b2);
 		bookList.add(b3);
 		bookList.add(b4);
 		bookList.add(b5);
-
-		Invoice i = null;
-		int amount = 0;
 
 		try {
 			a = new Address();
@@ -138,22 +128,11 @@ public class TestsToRefactor {
 			b4 = null;
 			b5 = null;
 			i = null;
-			amount = 0;
 		}
 	}
 
 	@Test
 	public void test_itemCount_changeMaxItemOrder() {
-
-		final int DELIVERY_COSTS_5 = 7;
-		final int DELIVERY_COSTS_10 = 5;
-		Address a = null;
-		Customer c = null;
-		Book b1 = new Book(12.5, "das leben des max mustermann", "mustermann", 125);
-		Book b2 = new Book(14.99, "sofies welt", "gaarder", 251);
-		Book b3 = new Book(8.69, "the jungle books", "kipling", 215);
-		Book b4 = new Book(15.99, "great expectations", "dickens", 314);
-		Book b5 = new Book(12.99, "küsschen, küsschen", "dahl", 145);
 		int maxItemOrder = 150;
 
 		List<Item> bookList = new ArrayList<Item>();
@@ -162,10 +141,6 @@ public class TestsToRefactor {
 		bookList.add(b3);
 		bookList.add(b4);
 		bookList.add(b5);
-
-		Invoice i = null;
-
-		int amount = 0;
 
 		try {
 			a = new Address();
@@ -206,19 +181,6 @@ public class TestsToRefactor {
 
 	@Test(expected = Exception.class)
 	public void test_addToManyItems() throws ToMuchItemsException {
-
-		final int DELIVERY_COSTS_5 = 7;
-		final int DELIVERY_COSTS_10 = 5;
-		Address a = null;
-		Customer c = null;
-		Book b1 = new Book(12.5, "das leben des max mustermann", "mustermann", 125);
-		Book b2 = new Book(14.99, "sofies welt", "gaarder", 251);
-		Book b3 = new Book(8.69, "the jungle books", "kipling", 215);
-		Book b4 = new Book(15.99, "great expectations", "dickens", 314);
-		Book b5 = new Book(12.99, "küsschen, küsschen", "dahl", 145);
-		int maxItemOrder = 0;
-
-		Invoice i = null;
 
 		int amount = 1;
 
