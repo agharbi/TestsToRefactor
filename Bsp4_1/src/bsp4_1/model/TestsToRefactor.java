@@ -37,6 +37,7 @@ public class TestsToRefactor {
 		amount = 0;
 		a = new Address();
 		i = new Invoice();
+		c = new Customer(a, "franz", "beispiel");
 		
 		b1 = new Book(12.5, "das leben des max mustermann", "mustermann", 125);
 		b2 = new Book(14.99, "sofies welt", "gaarder", 251);
@@ -70,12 +71,13 @@ public class TestsToRefactor {
 
 		
 		int maxItemOrder = 10;
+		//if (amount < 10)
+		
+		amount = 9;
 
-		Invoice i = null;
-
-		try {
+		/**try {
 			a = new Address();
-			c = new Customer(a, "franz", "beispiel");
+			
 			i = new Invoice();
 			i.setCustomer(c);
 			i.setMaxItemOrder(maxItemOrder);
@@ -98,15 +100,14 @@ public class TestsToRefactor {
 				assertTrue("es wurden zuviele Items hinzugefügt", true);
 			}
 		} 
-	}
+	}**/
 
 	@Test
 	public void test_addManyItems_getTotalPrice() {
 
 		try {
 			a = new Address();
-			c = new Customer(a, "franz", "beispiel");
-
+			
 			i = new Invoice();
 			i.setCustomer(c);
 			i.setMaxItemOrder(maxItemOrder);
@@ -117,11 +118,6 @@ public class TestsToRefactor {
 
 			for (Item item : bookList) {
 				i.addItems(item, amount);
-
-				/**if (amount < 5)
-					totalPrice += amount * item.getPrice() + DELIVERY_COSTS_5;
-				else
-					totalPrice += amount * item.getPrice() + DELIVERY_COSTS_10;**/
 			}
 
 			if (totalPrice == i.getTotalPrice()) {
@@ -143,7 +139,7 @@ public class TestsToRefactor {
 
 		try {
 			a = new Address();
-			c = new Customer(a, "franz", "beispiel");
+			
 
 			i = new Invoice();
 			i.setCustomer(c);
@@ -175,7 +171,7 @@ public class TestsToRefactor {
 
 		try {
 			a = new Address();
-			c = new Customer(a, "franz", "beispiel");
+			
 
 			i = new Invoice();
 			i.setCustomer(c);
