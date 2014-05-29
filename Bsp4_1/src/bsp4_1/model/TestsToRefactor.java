@@ -31,11 +31,20 @@ public class TestsToRefactor {
 	
 	List<Item> bookList = new ArrayList<Item>();
 	
-	/**Book b1 = new Book(12.5, "das leben des max mustermann", "mustermann", 125);
-	Book b2 = new Book(14.99, "sofies welt", "gaarder", 251);
-	Book b3 = new Book(8.69, "the jungle books", "kipling", 215);
-	Book b4 = new Book(15.99, "great expectations", "dickens", 314);
-	Book b5 = new Book(12.99, "küsschen, küsschen", "dahl", 145);**/
+	//@Befor
+	public void setUp(){
+		
+		amount = 0;
+		a = new Address();
+		i = new Invoice();
+		
+		b1 = new Book(12.5, "das leben des max mustermann", "mustermann", 125);
+		b2 = new Book(14.99, "sofies welt", "gaarder", 251);
+		b3 = new Book(8.69, "the jungle books", "kipling", 215);
+		b4 = new Book(15.99, "great expectations", "dickens", 314);
+		b5 = new Book(12.99, "küsschen, küsschen", "dahl", 145);
+	}
+	
 
 	@Test
 	public void test_addSomeBooks() {
@@ -86,7 +95,6 @@ public class TestsToRefactor {
 	@Test
 	public void test_addManyItems_getTotalPrice() {
 
-		List<Item> bookList = new ArrayList<Item>();
 		bookList.add(b1);
 		bookList.add(b2);
 		bookList.add(b3);
@@ -139,8 +147,7 @@ public class TestsToRefactor {
 	@Test
 	public void test_itemCount_changeMaxItemOrder() {
 		int maxItemOrder = 150;
-
-		List<Item> bookList = new ArrayList<Item>();
+		
 		bookList.add(b1);
 		bookList.add(b2);
 		bookList.add(b3);
