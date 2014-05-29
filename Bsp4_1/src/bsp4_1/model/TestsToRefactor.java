@@ -27,11 +27,15 @@ public class TestsToRefactor {
 	private final int DELIVERY_COSTS_10 = 5;
 	private int amount;
 	
-	Book b1 = new Book(12.5, "das leben des max mustermann", "mustermann", 125);
+	private Book b1, b2, b3, b4, b5;
+	
+	List<Item> bookList = new ArrayList<Item>();
+	
+	/**Book b1 = new Book(12.5, "das leben des max mustermann", "mustermann", 125);
 	Book b2 = new Book(14.99, "sofies welt", "gaarder", 251);
 	Book b3 = new Book(8.69, "the jungle books", "kipling", 215);
 	Book b4 = new Book(15.99, "great expectations", "dickens", 314);
-	Book b5 = new Book(12.99, "küsschen, küsschen", "dahl", 145);
+	Book b5 = new Book(12.99, "küsschen, küsschen", "dahl", 145);**/
 
 	@Test
 	public void test_addSomeBooks() {
