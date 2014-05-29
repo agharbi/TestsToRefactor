@@ -80,8 +80,8 @@ public class TestsToRefactor {
 			i.setCustomer(c);
 			i.setMaxItemOrder(maxItemOrder);
 
-			Random r = new Random();
-			amount = r.nextInt(15);
+			//Random r = new Random();
+			//amount = r.nextInt(15);
 
 			i.addItems(b1, amount);
 
@@ -111,17 +111,17 @@ public class TestsToRefactor {
 			i.setCustomer(c);
 			i.setMaxItemOrder(maxItemOrder);
 
-			Random r = new Random();
-			amount = r.nextInt(5) + 1;
+			//Random r = new Random();
+			//amount = r.nextInt(5) + 1;
 			double totalPrice = 0;
 
 			for (Item item : bookList) {
 				i.addItems(item, amount);
 
-				if (amount < 5)
+				/**if (amount < 5)
 					totalPrice += amount * item.getPrice() + DELIVERY_COSTS_5;
 				else
-					totalPrice += amount * item.getPrice() + DELIVERY_COSTS_10;
+					totalPrice += amount * item.getPrice() + DELIVERY_COSTS_10;**/
 			}
 
 			if (totalPrice == i.getTotalPrice()) {
@@ -149,8 +149,8 @@ public class TestsToRefactor {
 			i.setCustomer(c);
 			i.setMaxItemOrder(maxItemOrder);
 
-			Random r = new Random();
-			amount = r.nextInt(30) + 1;
+			//Random r = new Random();
+			//amount = r.nextInt(30) + 1;
 			int itemCount = 0;
 			for (Item item : bookList) {
 				i.addItems(item, amount);
