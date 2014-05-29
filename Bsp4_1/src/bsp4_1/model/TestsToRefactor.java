@@ -43,7 +43,7 @@ public class TestsToRefactor {
 		b2 = new Book(14.99, "sofies welt", "gaarder", 251);
 		b3 = new Book(8.69, "the jungle books", "kipling", 215);
 		b4 = new Book(15.99, "great expectations", "dickens", 314);
-		b5 = new Book(12.99, "küsschen, küsschen", "dahl", 145);
+		b5 = new Book(12.99, "k�sschen, k�sschen", "dahl", 145);
 		
 		bookList.add(b1);
 		bookList.add(b2);
@@ -67,23 +67,16 @@ public class TestsToRefactor {
 	
 
 	@Test
-	public void test_addSomeBooks() {
+	public void test_addSomeBooks() throws Exception{
 
-		
 		int maxItemOrder = 10;
-		//if (amount < 10)
 		
+		//if (amount < 10)
 		amount = 9;
 
-		/**try {
-			a = new Address();
-			
-			i = new Invoice();
+		i = new Invoice();
 			i.setCustomer(c);
 			i.setMaxItemOrder(maxItemOrder);
-
-			//Random r = new Random();
-			//amount = r.nextInt(15);
 
 			i.addItems(b1, amount);
 
@@ -93,46 +86,45 @@ public class TestsToRefactor {
 			assertEquals(i.getCustomer().getAddress(), a);
 			assertEquals(i.getMaxItemOrder(), maxItemOrder);
 
-		} catch (Exception e) {
-			if (amount < 10) {
-				assertFalse("dieser fehler hätte nicht auftreten sollen", true);
-			} else {
-				assertTrue("es wurden zuviele Items hinzugefügt", true);
-			}
-		} 
-	}**/
+		}
 
 	@Test
-	public void test_addManyItems_getTotalPrice() {
+	public void test_addManyItems_getTotalPrice_Delivery_Costs_5() throws Exception{
 
-		try {
-			a = new Address();
-			
-			i = new Invoice();
-			i.setCustomer(c);
-			i.setMaxItemOrder(maxItemOrder);
+		i = new Invoice();
+		i.setCustomer(c);
+		i.setMaxItemOrder(maxItemOrder);
+		amount = 4;
+		double totalPrice = 0;
 
-			//Random r = new Random();
-			//amount = r.nextInt(5) + 1;
-			double totalPrice = 0;
-
-			for (Item item : bookList) {
-				i.addItems(item, amount);
-			}
-
-			if (totalPrice == i.getTotalPrice()) {
-				assertTrue(true);
-			}
-
-		} catch (Exception e) {
-			if (amount < 10) {
-				assertFalse("dieser fehler hätte nicht auftreten dürfen", true);
-			} else {
-				assertTrue("es wurden zuviele Items hinzugefügt", true);
-			}
-		} 
+		for (Item item : bookList) {
+			i.addItems(item, amount);
+			totalPrice += amount * item.getPrice();
+		}
+		totalPrice += DELIVERY_COSTS_5;
+		if (totalPrice == i.getTotalPrice()) {
+			assertTrue(true);
+		}
 	}
 
+	@Test
+	public void test_addManyItems_getTotalPrice_Delivery_Costs_10() throws Exception{
+
+		i = new Invoice();
+		i.setCustomer(c);
+		i.setMaxItemOrder(maxItemOrder);
+		amount = 6;
+		double totalPrice = 0;
+
+		for (Item item : bookList) {
+			i.addItems(item, amount);
+			totalPrice += amount * item.getPrice();
+		}
+		totalPrice += DELIVERY_COSTS_10;
+		if (totalPrice == i.getTotalPrice()) {
+			assertTrue(true);
+		}
+	}
 	@Test
 	public void test_itemCount_changeMaxItemOrder() {
 		int maxItemOrder = 150;
