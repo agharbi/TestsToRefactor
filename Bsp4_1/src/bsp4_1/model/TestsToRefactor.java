@@ -43,6 +43,12 @@ public class TestsToRefactor {
 		b3 = new Book(8.69, "the jungle books", "kipling", 215);
 		b4 = new Book(15.99, "great expectations", "dickens", 314);
 		b5 = new Book(12.99, "küsschen, küsschen", "dahl", 145);
+		
+		bookList.add(b1);
+		bookList.add(b2);
+		bookList.add(b3);
+		bookList.add(b4);
+		bookList.add(b5);
 	}
 	
 
