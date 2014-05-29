@@ -19,18 +19,19 @@ import bsp4_1.model.ToMuchItemsException;
 
 public class TestsToRefactor {
 	
-	Address a = null;
-	Customer c = null;
-	final int DELIVERY_COSTS_5 = 7;
-	final int DELIVERY_COSTS_10 = 5;
+	private Address a;
+	private Customer c;
+	private Invoice i;
+	
+	private final int DELIVERY_COSTS_5 = 7;
+	private final int DELIVERY_COSTS_10 = 5;
+	private int amount;
+	
 	Book b1 = new Book(12.5, "das leben des max mustermann", "mustermann", 125);
 	Book b2 = new Book(14.99, "sofies welt", "gaarder", 251);
 	Book b3 = new Book(8.69, "the jungle books", "kipling", 215);
 	Book b4 = new Book(15.99, "great expectations", "dickens", 314);
 	Book b5 = new Book(12.99, "küsschen, küsschen", "dahl", 145);
-	
-	Invoice i = null;
-	int amount = 0;
 
 	@Test
 	public void test_addSomeBooks() {
